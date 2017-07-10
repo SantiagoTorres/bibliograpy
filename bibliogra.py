@@ -27,6 +27,8 @@ import argparse
 import latexcodec
 import pybtex.database.input.bibtex as bibtex
 
+import feed
+
 
 def latex_to_html(string):
     """
@@ -455,13 +457,19 @@ def parse_args():
                         help="The BibTeX file.  If no BibTeX file is given as "
                         "input, BibTeX entries are read from stdin.")
 
+    parser.add_argument("--rss",
+                        action="store_true",
+                        help="Whether to output an RSS feed file."
+                        "The default is false")
+
     return parser.parse_args()
 
 
 def main(output_dir,
          file_name=None,
          header_file="header.tpl",
-         footer_file="footer.tpl"):
+         footer_file="footer.tpl",
+         write_rss=False):
     """
     Entry point for this tool.
     """
@@ -515,10 +523,15 @@ def main(output_dir,
 
     write_file(os.path.join(output_dir, "bibtex.html"), "".join(data))
 
+    # create an atom feed for this
+    if write_rss:
+        feed.create_feed(bibdata, output_dir)
+
     return 0
 
 
 if __name__ == "__main__":
 
     args = parse_args()
-    sys.exit(main(args.OUTPUT_DIR, args.file_name, args.header, args.footer))
+    sys.exit(main(args.OUTPUT_DIR, args.file_name, args.header, args.footer,
+        args.rss))

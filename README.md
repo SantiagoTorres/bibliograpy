@@ -32,6 +32,9 @@ link if it can find the respective publication in
 starts with `@inproceedings{JohnDoe, ...}`, then `bibliograpy` will look for
 `OUTPUT_DIRECTORY/pdf/JohnDoe.pdf`.
 
+An additional flag to create rss feeds can be passed (`--rss`), and it will
+output an RSS 2.0 feed under `OUTPUT_DIRECTORY/feed`
+
 Alternatives
 ============
 Don't like `bibliograpy`?  Then have a look at
