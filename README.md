@@ -10,7 +10,8 @@ Dependencies
 ============
 
 You need [`Pybtex`](http://pybtex.sourceforge.net/) and
-[`latexcodec`](https://github.com/mcmtroffaes/latexcodec).
+[`latexcodec`](https://github.com/mcmtroffaes/latexcodec). You may install the 
+dependencies for this project by running `pip install -r requirements.txt`
 
 Usage
 =====
